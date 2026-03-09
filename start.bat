@@ -16,13 +16,11 @@ start http://localhost:5173
 rem Start Python backend API
 echo Starting backend API...
 cd backend
-if exist "venv\Scripts\activate.bat" (
-    call venv\Scripts\activate.bat
+if exist "venv\Scripts\python.exe" (
+    venv\Scripts\python.exe main.py
 ) else (
-    echo Warning: Virtual environment not found.
+    python main.py
 )
-
-python main.py
 
 rem Once the Python server is graciously stopped (Ctrl+C), kill Node.
 echo Closing OmniBox...
