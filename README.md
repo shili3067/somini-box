@@ -89,7 +89,21 @@ npm run build
   ```bash
   ./start.sh
   ```
-> 关闭后台：只需把脚本弹出的 `CMD` 服务器黑框关闭进程 (Ctrl + C)，将自动利用 `TaskKill` 把残留的前端 Node 节点服务一同消灭，绿色健康无后台！
+## 🍏 macOS / Linux 开发与维护
+
+1. `start.sh` 已为 Mac 系统深度优化。由于 macOS 默认未提供旧版本 `python`，脚本将自动探测挂载 `python3`；它同时也包含了原生虚拟环境 `bin/activate` 的探测能力。
+2. 退出时脚本利用守护进程模式 `trap`，即便是强杀（`Ctrl + C`）或终端意外退出，后台 Node 挂载进程也绝不会残留。
+
+### 推送至个人远程仓库 (Git Remote Push)
+由于该架构属于为您个人定制的纯净版代码体（已处理好纯净的 gitignore）。当您要在 GitHub、GitLab 或 Gitee 建仓追踪它时，请直接执行以下终端命令：
+
+```bash
+# 1. 关联您的远程空仓库 (将下面链接替换为您实际建立的远端URL)
+git remote add origin https://github.com/您的用户名/您的仓库名.git
+
+# 2. 将主分支强制推送到云端远程仓库备份
+git push -u origin master
+```
 
 ---
 
