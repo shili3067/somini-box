@@ -36,7 +36,7 @@ def update_progress(d, task_id):
 def download_video_thread(url: str, task_id: str):
     import shutil
     # Store temporarily with task_id to isolate the file
-    download_dir = os.path.join(os.path.expanduser('~'), 'Downloads', 'OmniVid_Tmp', task_id)
+    download_dir = os.path.join(os.path.expanduser('~'), 'Downloads', 'OmniBox_Tmp', task_id)
     os.makedirs(download_dir, exist_ok=True)
     
     ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()

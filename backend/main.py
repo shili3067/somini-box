@@ -19,7 +19,7 @@ app.add_middleware(
 
 def start_api_server():
     """Start the FastAPI server."""
-    print("Starting OmniVid Backend API on http://127.0.0.1:18000")
+    print("Starting OmniBox Backend API on http://127.0.0.1:18000")
     uvicorn.run(app, host="127.0.0.1", port=18000, log_level="info")
 
 if __name__ == "__main__":

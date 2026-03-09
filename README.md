@@ -1,4 +1,4 @@
-# 🌊 OmniVid Downloader (全能视频下载器)
+# 🌊 OmniBox (全能极客工具箱)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python" alt="Python Version">
@@ -60,8 +60,8 @@
 ### 2. 初始化项目
 
 ```bash
-git clone https://github.com/your-username/OmniVid-Downloader.git
-cd OmniVid-Downloader
+git clone https://github.com/your-username/OmniBox.git
+cd OmniBox
 
 # 后端环境
 cd backend

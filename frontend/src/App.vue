@@ -121,9 +121,9 @@ const getBestVideoUrl = () => {
         <header class="h-16 border-b border-white/5 bg-black/40 backdrop-blur-xl sticky top-0 z-50 flex items-center px-6 md:px-12">
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <span class="text-white font-black text-sm">OV</span>
+              <span class="text-white font-black text-sm">OB</span>
             </div>
-            <span class="font-bold text-lg tracking-wide text-zinc-100">OmniVid<span class="text-blue-500">.</span></span>
+            <span class="font-bold text-lg tracking-wide text-zinc-100">OmniBox<span class="text-blue-500">.</span></span>
           </div>
           <div class="ml-auto flex items-center gap-4">
              <div class="text-xs font-medium text-slate-500 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">

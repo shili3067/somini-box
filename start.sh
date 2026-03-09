@@ -1,8 +1,8 @@
 #!/bin/bash
-echo "🌊 Starting OmniVid Downloader (Web App)..."
+echo "🌊 Starting OmniBox (Web WebApp)..."
 
 # Trap Ctrl+C (SIGINT) and kill the frontend server gracefully
-trap 'echo -e "\n⏹️ Closing OmniVid Downloader..."; kill $FRONTEND_PID 2>/dev/null; exit 0' INT TERM EXIT
+trap 'echo -e "\n⏹️ Closing OmniBox..."; kill $FRONTEND_PID 2>/dev/null; exit 0' INT TERM EXIT
 
 echo "Starting frontend server..."
 cd frontend

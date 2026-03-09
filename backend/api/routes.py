@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from typing import Optional, Dict, Any
 from core.extractor import resolve_video
 
-app = FastAPI(title="OmniVid API")
+app = FastAPI(title="OmniBox API")
 
 # Define request schemas
 class ResolveRequest(BaseModel):
@@ -21,7 +21,7 @@ class InfoResponse(BaseModel):
 
 @app.get("/api/ping")
 def ping():
-    return {"status": "ok", "message": "OmniVid Backend is running"}
+    return {"status": "ok", "message": "OmniBox Backend is running"}
 
 @app.post("/api/resolve", response_model=InfoResponse)
 def resolve_url(request: ResolveRequest):
