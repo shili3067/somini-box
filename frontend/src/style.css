@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default naive ui border colors on our dark background */
+.n-input {
+  --n-border: 1px solid rgba(255,255,255,0.05) !important;
+  --n-color: transparent !important;
+  --n-color-focus: transparent !important;
+}
