@@ -4,6 +4,8 @@ import threading
 import uuid
 import time
 from typing import Dict, Any
+import imageio_ffmpeg
+from core.extractor import clean_error_message
 
 # Global memory to track download status
 download_tasks: Dict[str, Dict[str, Any]] = {}
@@ -37,11 +39,14 @@ def download_video_thread(url: str, task_id: str):
     download_dir = os.path.join(os.path.expanduser('~'), 'Downloads', 'OmniVid_Tmp', task_id)
     os.makedirs(download_dir, exist_ok=True)
     
+    ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
+    
     ydl_opts = {
         'outtmpl': os.path.join(download_dir, '%(title)s.%(ext)s'),
         'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
         'merge_output_format': 'mp4',
         'progress_hooks': [lambda d: update_progress(d, task_id)],
+        'ffmpeg_location': ffmpeg_path,
         'quiet': True,
         'no_warnings': True,
         'nocheckcertificate': True
@@ -67,7 +72,7 @@ def download_video_thread(url: str, task_id: str):
             raise Exception("File merging failed or file not found")
     except Exception as e:
         download_tasks[task_id]['status'] = 'failed'
-        download_tasks[task_id]['error'] = str(e)
+        download_tasks[task_id]['error'] = clean_error_message(str(e))
 
 def start_download(url: str) -> str:
     """Start a background download and return tracking ID."""
