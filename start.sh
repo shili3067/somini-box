@@ -1,11 +1,12 @@
-#!/bin/bash
-echo "🌊 Starting OmniBox (Web WebApp)..."
+# Get the directory of the script
+BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
+echo "🌊 Starting OmniBox in $BASE_DIR..."
 
 # Trap Ctrl+C (SIGINT) and kill the frontend server gracefully
 trap 'echo -e "\n⏹️ Closing OmniBox..."; kill $FRONTEND_PID 2>/dev/null; exit 0' INT TERM EXIT
 
 echo "Starting frontend server..."
-cd frontend
+cd "$BASE_DIR/frontend"
 npm run dev &
 FRONTEND_PID=$!
 
@@ -21,7 +22,7 @@ else
 fi
 
 echo "Starting backend API..."
-cd ../backend
+cd "$BASE_DIR/backend"
 
 # Activate virtualenv natively for macOS/Linux
 if [ -f "venv/bin/activate" ]; then
@@ -38,3 +39,4 @@ if command -v python3 >/dev/null 2>&1; then
 else
     python main.py
 fi
+
