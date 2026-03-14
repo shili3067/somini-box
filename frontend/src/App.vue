@@ -22,11 +22,13 @@ const downloadStatus = ref('') // 'downloading', 'processing', 'completed', 'fai
 const taskId = ref('')
 let pollInterval: any = null
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:18000'
+
 const handleResolve = async () => {
   if (!url.value) return
   loading.value = true
   try {
-    const res = await axios.post('http://127.0.0.1:18000/api/resolve', { url: url.value })
+    const res = await axios.post(`${API_BASE}/api/resolve`, { url: url.value })
     if (res.data.success) {
       videoInfo.value = res.data.data
     } else {
@@ -50,7 +52,7 @@ const startDownload = async () => {
   downloadStatus.value = 'starting'
   
   try {
-    const res = await axios.post('http://127.0.0.1:18000/api/download', { url: videoInfo.value.url })
+    const res = await axios.post(`${API_BASE}/api/download`, { url: videoInfo.value.url })
     if (res.data.success) {
       taskId.value = res.data.task_id
       pollDownloadStatus()
@@ -68,7 +70,7 @@ const pollDownloadStatus = () => {
   if (pollInterval) clearInterval(pollInterval)
   pollInterval = setInterval(async () => {
     try {
-      const res = await axios.get(`http://127.0.0.1:18000/api/download/${taskId.value}`)
+      const res = await axios.get(`${API_BASE}/api/download/${taskId.value}`)
       const data = res.data
       
       downloadStatus.value = data.status
@@ -79,7 +81,7 @@ const pollDownloadStatus = () => {
         downloadPercent.value = 100
         
         // Trigger browser native download!
-        const downloadUrl = `http://127.0.0.1:18000/api/download/file/${taskId.value}`
+        const downloadUrl = `${API_BASE}/api/download/file/${taskId.value}`
         const a = document.createElement('a')
         a.href = downloadUrl
         a.download = '' 

@@ -19,8 +19,10 @@ app.add_middleware(
 
 def start_api_server():
     """Start the FastAPI server."""
-    print("Starting OmniBox Backend API on http://127.0.0.1:18000")
-    uvicorn.run(app, host="127.0.0.1", port=18000, log_level="info")
+    host = os.getenv("HOST", "127.0.0.1")
+    port = int(os.getenv("PORT", 18000))
+    print(f"Starting OmniBox Backend API on http://{host}:{port}")
+    uvicorn.run(app, host=host, port=port, log_level="info")
 
 if __name__ == "__main__":
     start_api_server()

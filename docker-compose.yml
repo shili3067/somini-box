@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: somini-box-backend
+    environment:
+      - HOST=0.0.0.0
+      - PORT=18000
+    volumes:
+      - ./backend_temp:/root/Downloads/OmniBox_Tmp # Map the temp download folder to host
+    ports:
+      - "18000:18000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: somini-box-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend_temp:
